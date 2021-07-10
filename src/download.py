@@ -4,6 +4,7 @@ from time import time
 from tqdm import tqdm
 import pickle
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor
 
 
 def getUserNames():
@@ -147,8 +148,15 @@ def emotesFromId():
     df.to_csv('file1.csv')
 
 
+def download(url):
+    response = requests.get(url)
+    with open(path, 'wb') as handle:
+        handle.write(response.content)
+
+
 def downloadEmoteImages():
-    pass
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        executor.map(download, urls) #urls=[list of url]
 
 
 if __name__ == '__main__':
