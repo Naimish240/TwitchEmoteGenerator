@@ -152,5 +152,5 @@ def downloadEmoteImages():
 
 
 if __name__ == '__main__':
-    # getIdsFromUserNames()
+    getIdsFromUserNames()
     emotesFromId()
