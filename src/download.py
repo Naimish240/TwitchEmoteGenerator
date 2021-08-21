@@ -65,7 +65,7 @@ def getIdsFromUserNames():
             session = requests.Session()
             session.headers.update(headers)
             response = session.get(
-                f"https://api.twitch.tv/helix/search/channels?query={name}",
+                f"https://api.twitch.tv/helix/search/channels?query={name}&first={100}",
                 headers=session.headers,
             )
 
@@ -162,5 +162,5 @@ def downloadEmoteImages():
 
 if __name__ == '__main__':
     # getIdsFromUserNames()
-    # emotesFromId()
-    downloadEmoteImages()
+    emotesFromId()
+    # downloadEmoteImages()
